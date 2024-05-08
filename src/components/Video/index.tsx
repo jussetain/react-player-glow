@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 
 import './style.css';
 
-type styleProps = {
+export type styleProps = {
     video?: object;
     canvas?: object;
 }
