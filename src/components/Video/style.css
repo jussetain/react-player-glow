@@ -1,0 +1,12 @@
+.canvas {
+    opacity: 1;
+    z-index: -1 !important;
+    scale: 1.02;
+    position: absolute;
+    filter: blur(10px);
+}
+
+.video {
+    border-radius: 8px;
+    z-index: 20;
+}
