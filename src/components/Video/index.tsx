@@ -18,7 +18,6 @@ function Video({
     source: string
     style?: styleProps,
 }) {
-
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -62,14 +61,12 @@ function Video({
 
         return () => {
             video.removeEventListener('loadeddata', draw);
-            video.addEventListener('seeked', draw);
-            video.addEventListener('play', drawLoop);
-            video.addEventListener('pause', drawPause);
-            video.addEventListener('ended', drawPause);
+            video.removeEventListener('seeked', draw);
+            video.removeEventListener('play', drawLoop);
+            video.removeEventListener('pause', drawPause);
+            video.removeEventListener('ended', drawPause);
         }
-
     }, []);
-
 
     return (
         <React.Fragment>
@@ -93,7 +90,6 @@ function Video({
                 <source src={source}></source>
             </video>
         </React.Fragment>
-
     )
 }
 

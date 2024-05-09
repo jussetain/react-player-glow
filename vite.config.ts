@@ -7,15 +7,27 @@ import dts from 'vite-plugin-dts'
 export default defineConfig({
   plugins: [
     react(),
-    dts({ include: ['dist'], insertTypesEntry: true })],
+    dts({
+      include: ['dist'],
+      insertTypesEntry: true
+    })],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.tsx'),
-      formats: ['es']
+      entry: resolve(__dirname, 'src/index.ts'),
+      formats: ['es'],
+      name: 'react-video-glow',
+      fileName: () => `index.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom']
-    }
+      external: ['react', 'react-dom'],
+      output: {
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+        },
+      },
+    },
+    emptyOutDir: true,
   },
 
 })
